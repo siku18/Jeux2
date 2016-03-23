@@ -16,11 +16,11 @@
     <body>
         <div class="entete">
             <c:if test="${sessionScope.login==null}">
-                <input style="text-align: left" type="button" onclick="seConnecter()" value="Se connecter"/>
-                <input style="text-align: right" type="button" onclick="inscrire()" value="Inscription"/>
+                <input  style="align-items: flex-start" type="button" onclick="seConnecter()" value="Se connecter"/>
+                <input style="align-items: flex-end" type="button" onclick="inscrire()" value="Inscription"/>
             </c:if>
-            <c:if test="${!sessionScope.login!=null}">
-                <input type="button" onclick="creationPartieServlet" value="Se connecter"/>
+            <c:if test="${sessionScope.login!=null}">
+                <input type="button" onclick="creationPartieServlet" value="Nouvelle Partie"/>
             </c:if>
         </div>
         <div class="contenu">

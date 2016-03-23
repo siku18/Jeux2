@@ -38,9 +38,6 @@ public class Joueur implements Serializable {
     @JoinTable(name = "JOUEURS_PARTIES")
     private List<Partie> parties;
     
-    
-    
-    
     public String getLogin() {
         return login;
     }

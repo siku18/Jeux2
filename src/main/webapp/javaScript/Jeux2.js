@@ -7,3 +7,15 @@
 function seConnecter(){
     $('.contenu').load("_seConnecter.jsp");
 }
+
+function inscrire(){
+    $('.contenu').load("_inscription.jsp");
+}
+
+function reponseConnection(){
+    $('.contenu').load("__reponseConnection.jsp");
+}
+
+function reponseInscription(){
+    $('.contenu').load("__reponseInscription.jsp");
+}

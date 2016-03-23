@@ -14,5 +14,5 @@
         Mot de passe:
     </label>
     <input type="password" name="mdp"/>
-    <input onclick="_reponseConnection" type="submit">
+    <input onclick="reponseConnection()" type="submit">
 </form>

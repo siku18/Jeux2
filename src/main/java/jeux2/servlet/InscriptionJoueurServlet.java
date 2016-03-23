@@ -5,7 +5,6 @@
  */
 package jeux2.servlet;
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author admin
  */
-@WebServlet(name = "AjouterUtilisateurServlet", urlPatterns = {"/AjouterUtilisateurServlet"})
+@WebServlet(name = "InscriptionJoueurServlet", urlPatterns = {"/InscriptionJoueurServlet"})
 public class InscriptionJoueurServlet extends AutowireServlet {
 
     @Autowired
@@ -29,18 +28,14 @@ public class InscriptionJoueurServlet extends AutowireServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Joueur u = new Joueur();
-        u.setLogin((String) req.getParameter("login"));
-        u.setMdp((String) req.getParameter("mdp"));
+        Joueur j = new Joueur();
+        j.setLogin((String) req.getParameter("login"));
+        j.setMdp((String) req.getParameter("mdp"));
 
-        Boolean etatInscription = inscriptionService.inscription(u);
+        Boolean joueurInscrit = inscriptionService.inscription(j);
 
-        req.setAttribute("etatInscription", etatInscription);
+        req.setAttribute("joueurInscrit", joueurInscrit);
 
-        if (etatInscription == false) {
-            req.getRequestDispatcher("Ajouter_utilisateur.jsp").forward(req, resp);
-        } else {
-            req.getRequestDispatcher("inscrit.jsp").forward(req, resp);
-        }
+        req.getRequestDispatcher("_reponseInscription.jsp").forward(req, resp);
     }
 }
