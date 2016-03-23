@@ -6,7 +6,7 @@
 package jeux2.service.Crud;
 
 
-import jeux2.entity.Utilisateur;
+import jeux2.entity.Joueur;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @author admin
  */
 @Service
-public interface UtilisateurService extends CrudRepository<Utilisateur, Long>{
+public interface JoueurService extends CrudRepository<Joueur, Long>{
     
-    public Utilisateur findByLogin (String login);
+    public Joueur findByLogin (String login);
 }

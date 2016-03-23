@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import jeux2.entity.Utilisateur;
+import jeux2.entity.Joueur;
 import jeux2.service.InscriptionService;
 import jeux2.spring.AutowireServlet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author admin
  */
 @WebServlet(name = "AjouterUtilisateurServlet", urlPatterns = {"/AjouterUtilisateurServlet"})
-public class InscriptionUtilisateurServlet extends AutowireServlet {
+public class InscriptionJoueurServlet extends AutowireServlet {
 
     @Autowired
     private InscriptionService inscriptionService;
@@ -29,7 +29,7 @@ public class InscriptionUtilisateurServlet extends AutowireServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Utilisateur u = new Utilisateur();
+        Joueur u = new Joueur();
         u.setLogin((String) req.getParameter("login"));
         u.setMdp((String) req.getParameter("mdp"));
 

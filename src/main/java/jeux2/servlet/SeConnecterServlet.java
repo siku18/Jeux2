@@ -12,20 +12,20 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import jeux2.entity.Utilisateur;
-import jeux2.service.Crud.UtilisateurService;
+import jeux2.entity.Joueur;
 import jeux2.spring.AutowireServlet;
 import org.springframework.beans.factory.annotation.Autowired;
+import jeux2.service.Crud.JoueurService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
+@WebServlet(name = "SeConnecterServlet", urlPatterns = {"/seConnecterServlet"})
 public class SeConnecterServlet extends AutowireServlet {
 
     @Autowired
-    private UtilisateurService utilisateurService;
+    private JoueurService joueurService;
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,29 +34,23 @@ public class SeConnecterServlet extends AutowireServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Utilisateur> listeUtil = new ArrayList<>();
-        listeUtil = (List<Utilisateur>) utilisateurService.findAll();
-
-        Boolean estLogger = false;
-
-        if (!listeUtil.isEmpty()) {
-            for (Utilisateur u : listeUtil) {
+        List<Joueur> listeJoueurs = new ArrayList<>();
+        listeJoueurs = (List<Joueur>) joueurService.findAll();
+        
+        boolean joueurConnecter=false;
+        
+        if (!listeJoueurs.isEmpty()) {
+            for (Joueur u : listeJoueurs) {
                 if (u.getLogin().equals(req.getParameter("login"))) {
                     if (u.getMdp().equals(req.getParameter("mdp"))) {
                         req.getSession().setAttribute("login", req.getParameter("login"));
                         req.getSession().setAttribute("mdp", req.getParameter("mdp"));
-                        estLogger = true;
-                        String login=req.getParameter("login");
+                       joueurConnecter=true;
                     }
                 }
             }
         }
-        req.setAttribute("estLogger", estLogger);
-        if (estLogger == true) {
-            req.getRequestDispatcher("est_loger.jsp").forward(req, resp);
-        }
-        else{
-        req.getRequestDispatcher("login.jsp").forward(req, resp);
-        }
+        req.setAttribute("joueurConnecter", joueurConnecter);
+        req.getRequestDispatcher("_reponseConnection.jsp").include(req, resp);
     }
 }

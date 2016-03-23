@@ -6,8 +6,10 @@
 package jeux2.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jeux2.spring.AutowireServlet;
@@ -16,12 +18,10 @@ import jeux2.spring.AutowireServlet;
  *
  * @author admin
  */
-@WebServlet(name = "SeDeconnecterServlet", urlPatterns = {"/se_deconnecter"})
-public class SeDeconnecterServlet extends AutowireServlet {
+@WebServlet(name = "creationPartieServlet", urlPatterns = {"/creationPartieServlet"})
+public class CreationPartieServlet  extends AutowireServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        req.getRequestDispatcher("login.jsp").forward(req, resp);
-        }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
+}

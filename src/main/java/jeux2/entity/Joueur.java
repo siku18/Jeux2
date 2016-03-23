@@ -6,19 +6,21 @@
 package jeux2.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author tom
  */
 @Entity
-public class Utilisateur implements Serializable {
+public class Joueur implements Serializable {
 
     
     private static final long serialVersionUID = 1L;
@@ -31,6 +33,12 @@ public class Utilisateur implements Serializable {
     
     @Column(length = 64)
     private String mdp;
+    
+    @ManyToMany(mappedBy = "joueurs")
+    @JoinTable(name = "JOUEURS_PARTIES")
+    private List<Partie> parties;
+    
+    
     
     
     public String getLogin() {
@@ -67,10 +75,10 @@ public class Utilisateur implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Utilisateur)) {
+        if (!(object instanceof Joueur)) {
             return false;
         }
-        Utilisateur other = (Utilisateur) object;
+        Joueur other = (Joueur) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

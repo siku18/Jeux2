@@ -6,10 +6,10 @@
 package jeux2.service;
 
 import java.util.List;
-import jeux2.entity.Utilisateur;
-import jeux2.service.Crud.UtilisateurService;
+import jeux2.entity.Joueur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import jeux2.service.Crud.JoueurService;
 
 /**
  *
@@ -19,13 +19,12 @@ import org.springframework.stereotype.Service;
 public class InscriptionService {
 
     @Autowired
-    private UtilisateurService utilisateurService;
+    private JoueurService utilisateurService;
 
-    public Boolean inscription(Utilisateur u) {
-
-        List<Utilisateur> listeUtilisateurs = (List<Utilisateur>) utilisateurService.findAll();
+    public Boolean inscription(Joueur u) {
+        List<Joueur> listeUtilisateurs = (List<Joueur>) utilisateurService.findAll();
         if (!listeUtilisateurs.isEmpty()){
-            for (Utilisateur u2 : listeUtilisateurs) {
+            for (Joueur u2 : listeUtilisateurs) {
                 if (u.getLogin().equals(u2.getLogin())) {
                     return false;
                 }
