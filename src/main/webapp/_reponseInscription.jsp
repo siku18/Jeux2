@@ -7,9 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <c:if test="${joueurInscrit==true}" >
-    Vous etes inscrit !
+     <script> alert ("Vous etes inscrit !");</script>
 </c:if>
 <c:if test="${joueurInscrit==false}" >
-    Ce login est deja utilise, essayer un autre login !
+    <script> alert ("Ce login est deja utilise, essayer un autre login ! !");</script>
+    <br>
     <c:import url="_inscription.jsp"/>
 </c:if>

@@ -33,7 +33,6 @@ public class SeConnecterServlet extends AutowireServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         List<Joueur> listeJoueurs = new ArrayList<>();
         listeJoueurs = (List<Joueur>) joueurService.findAll();
         
@@ -45,7 +44,7 @@ public class SeConnecterServlet extends AutowireServlet {
                     if (u.getMdp().equals(req.getParameter("mdp"))) {
                         req.getSession().setAttribute("login", req.getParameter("login"));
                         req.getSession().setAttribute("mdp", req.getParameter("mdp"));
-                       joueurConnecter=true;
+                        joueurConnecter=true;
                     }
                 }
             }

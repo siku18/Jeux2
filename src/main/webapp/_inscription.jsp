@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<form action="InscriptionJoueurServlet" method="post">
+
     <label>
         Votre login:
     </label>
@@ -16,5 +16,4 @@
        Votre mot de passe:
     </label>
     <input type="password" name="mdp"/>
-    <input onclick="_reponseInscription" type="submit">
-</form>
+    <input onclick="reponseInscription()" type="button" value="S'inscrire">

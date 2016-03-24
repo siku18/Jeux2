@@ -5,13 +5,15 @@
  */
 package jeux2.entity;
 
+import jeux2.enumeration.TypePartieEnum;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 /**
@@ -26,8 +28,37 @@ public class Partie implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String nom;
+    
     @ManyToMany
     private List<Joueur> joueurs;
+    
+    @Enumerated(EnumType.STRING)
+    private TypePartieEnum typePartie;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public List<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
+    public void setJoueurs(List<Joueur> joueurs) {
+        this.joueurs = joueurs;
+    }
+
+    public TypePartieEnum getTypePartie() {
+        return typePartie;
+    }
+
+    public void setTypePartie(TypePartieEnum typePartie) {
+        this.typePartie = typePartie;
+    }
     
     
     public Long getId() {

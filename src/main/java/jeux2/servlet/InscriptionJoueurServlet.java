@@ -36,6 +36,6 @@ public class InscriptionJoueurServlet extends AutowireServlet {
 
         req.setAttribute("joueurInscrit", joueurInscrit);
 
-        req.getRequestDispatcher("_reponseInscription.jsp").forward(req, resp);
+        req.getRequestDispatcher("_reponseInscription.jsp").include(req, resp);
     }
 }

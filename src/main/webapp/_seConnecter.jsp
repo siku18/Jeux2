@@ -3,16 +3,14 @@
     Created on : 23 mars 2016, 12:29:36
     Author     : admin
 --%>
-
-<form action="seConnecterServlet" method="post">
+<script src="javaScript/Jeux2.js" type="text/javascript"></script>
     <label>
         Login:
     </label>
-    <input type="text" name="login"/>
+    <input type="text" name="login" value="login"/>
     <br>
     <label>
         Mot de passe:
     </label>
-    <input type="password" name="mdp"/>
-    <input onclick="reponseConnection()" type="submit">
-</form>
+    <input type="password" name="mdp" value="mdp"/>
+    <input onclick="reponseConnection()" type="button" value="Se connecter">

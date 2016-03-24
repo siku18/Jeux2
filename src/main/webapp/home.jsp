@@ -13,18 +13,9 @@
         <script src="javaScript/jquery-2.2.2.js" type="text/javascript"></script>
         <script src="javaScript/Jeux2.js" type="text/javascript"></script>
     </head>
-    <body>
-        <div class="entete">
-            <c:if test="${sessionScope.login==null}">
-                <input  style="align-items: flex-start" type="button" onclick="seConnecter()" value="Se connecter"/>
-                <input style="align-items: flex-end" type="button" onclick="inscrire()" value="Inscription"/>
-            </c:if>
-            <c:if test="${sessionScope.login!=null}">
-                <input type="button" onclick="creationPartieServlet" value="Nouvelle Partie"/>
-            </c:if>
-        </div>
-        <div class="contenu">
-        </div>
-        <div class="pied">Pied</div>
+    <body >
+        <c:import url="_entete.jsp"/>
+        <c:import url="_contenu.jsp"/>
+        <c:import url="_pied.jsp"/>
     </body>
 </html>
